@@ -74,57 +74,40 @@ function App() {
     }
   }
 
+  if (loading) {
+    return <p>loading...</p>;
+  }
+
   return (
-    <div
-      className="App"
-      style={{ minHeight: '1000px', backgroundColor: 'yellow' }}
-    >
-      <h1 style={{ paddingTop: '300px' }}>The Yellow Guest List</h1>
-      <button onClick={() => setDisabled(!disabled)}>Disable Form</button>
-      <form style={{ paddingTop: '100px' }} onSubmit={handleFormSubmit}>
+    <div className="App">
+      <h1>The Yellow Guest List</h1>
+      <button onClick={() => setDisabled(!disabled)}>Form On / Off</button>
+      <form onSubmit={handleFormSubmit}>
         <label htmlFor="first-name">First name: </label>
         <input
           id="first-name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
-        <label style={{ paddingLeft: '20px' }} htmlFor="last-name">
-          Last name:{' '}
-        </label>
+        <label htmlFor="last-name">Last name: </label>
         <input
           id="last-name"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        {!loading && (
-          <button style={{ marginLeft: '20px' }} disabled={disabled}>
-            Add Guest
-          </button>
-        )}
+        <button disabled={disabled}>Add Guest</button>
       </form>
 
-      {loading && <div>loading...</div>}
-      <ul
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyItems: 'right',
-          alignContent: 'right',
-          marginTop: '50px',
-        }}
-      >
+      <ul>
         {guests.map((guest) => (
-          <li
-            style={{ justifyItems: 'right', justifyContent: 'right' }}
-            key={guest.id}
-          >
+          <li key={guest.id}>
             {guest.firstName} {guest.lastName}{' '}
+            <button onClick={() => toggleAttending(guest.id)}>Attending</button>
+            {guest.attending ? <span>Yes</span> : <span>No</span>}
             <button onClick={() => deleteGuestOnServer(guest.id)}>
               Delete
             </button>
-            <button onClick={() => toggleAttending(guest.id)}>Attending</button>
-            {guest.attending ? <span>Yes</span> : <span>No</span>}
           </li>
         ))}
       </ul>
