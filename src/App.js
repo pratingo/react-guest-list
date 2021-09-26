@@ -9,9 +9,9 @@ function App() {
   const [attending, setAttending] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const { get, post, loading } = useFetch(
-    'https://expres-rest-guest-list-api.herokuapp.com',
+    'https://my-react-guest-list-serv.herokuapp.com',
   );
-  const baseUrl = 'https://expres-rest-guest-list-api.herokuapp.com';
+  const baseUrl = 'https://my-react-guest-list-serv.herokuapp.com';
 
   useEffect(() => {
     get('/').then((data) => {
