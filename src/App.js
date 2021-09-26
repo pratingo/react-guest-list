@@ -97,9 +97,11 @@ function App() {
           onChange={(e) => setLastName(e.target.value)}
         />
 
-        <button style={{ marginLeft: '20px' }} disabled={disabled}>
-          Add Guest
-        </button>
+        {!loading && (
+          <button style={{ marginLeft: '20px' }} disabled={disabled}>
+            Add Guest
+          </button>
+        )}
       </form>
 
       {loading && <div>loading...</div>}
