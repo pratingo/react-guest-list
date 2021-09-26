@@ -8,8 +8,10 @@ function App() {
   const [lastName, setLastName] = useState('');
   const [attending, setAttending] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const { get, post, loading } = useFetch('http://localhost:5000');
-  const baseUrl = 'http://localhost:5000';
+  const { get, post, loading } = useFetch(
+    'https://expres-rest-guest-list-api.herokuapp.com',
+  );
+  const baseUrl = 'https://expres-rest-guest-list-api.herokuapp.com';
 
   useEffect(() => {
     get('/').then((data) => {
