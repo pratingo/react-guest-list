@@ -11,8 +11,14 @@ function App() {
   const { get, post, loading } = useFetch(
     'https://my-react-guest-list-serv.herokuapp.com',
   );
-  const baseUrl = 'https://my-react-guest-list-serv.herokuapp.com';
-
+  
+  
+  const { get, post, loading } = useFetch(
+    'https://radiant-savannah-47900.herokuapp.com/',
+  );
+  
+//  const baseUrl = 'https://my-react-guest-list-serv.herokuapp.com';
+const baseUrl ='https://radiant-savannah-47900.herokuapp.com/';
   useEffect(() => {
     get('/').then((data) => {
       if (data) {
